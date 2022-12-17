@@ -18,19 +18,22 @@ from django.http import HttpRequest, HttpResponse
 from django.urls import path
 from random import randint
 
+from views_audi import audi, audi_purchase
+from views_name import name
+from views_weather import show_weather
+
+
 def hello_world( request: HttpRequest)->HttpResponse:
-    return (HttpResponse("Hello World. <br> <a href='weather'>Get weather</a    ></br>"))
-
-
-def show_weather(request: HttpRequest)->HttpResponse:
-    temperature = randint(-40,40)
-    feel = "OK"
-    if temperature < 0:
-        feel = "cold"
-    if temperature < -10:
-        feel = "terribly cold"
-
-    return (HttpResponse(f"Today is {temperature} celsius degree. It is {feel}! <br><a href='hello'>main page</a></br>"))
+    return (HttpResponse(
+        """
+        <h3>Hello World.</h3> <br>
+        <div style="font-size:24px">
+            <a href='weather'>Get weather</a    ></br>
+            <a href='audi'> Audi Centre</a><br>
+            <a href='name'> What is your name</a><br>
+        </div>
+        """
+    ))
 
 
 urlpatterns = [
@@ -38,4 +41,7 @@ urlpatterns = [
     path('', hello_world),
     path('hello', hello_world),
     path('weather', show_weather),
+    path('audi', audi),
+    path('buy_car/<int:id_>', audi_purchase),
+    path('name', name),
 ]
