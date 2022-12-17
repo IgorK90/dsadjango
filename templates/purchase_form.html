@@ -14,15 +14,15 @@
         <form method="POST">
             {% csrf_token %}
             <div class="mb-3">
-                <laber for="name" class="form-label"> Your name</label>
+                <label for="name" class="form-label"> Your name</label>
                 <input class="form-control" id="name" name="name" required><br>
             </div>
             <div class="mb-3">
-                <laber for="phone" class="form-label"> Your phone</label>
-                <input class="form-control" id="phone" name="phone"required><br>
+                <label for="phone" class="form-label"> Your phone</label>
+                <input class="form-control" id="phone" name="phone" required><br>
             </div>
             <div class="mb-3">
-                <laber for="email" class="form-label"> Your email</label>
+                <label for="email" class="form-label"> Your email</label>
                 <input class="form-control" id="email" name="email" type="email" required><br>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button><br>
