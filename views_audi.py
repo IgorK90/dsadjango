@@ -8,24 +8,28 @@ cars = [
     {
         "id": 1,
         "purchased":False,
+        "available":2,
         "model": "A6",
         "image":"https://thumb.tildacdn.com/tild3836-3936-4134-a433-353663656330/-/resize/520x/-/format/webp/2019.png"
     },
     {
         "id": 2,
         "purchased":False,
+        "available":2,
         "model": "A7",
         "image": "https://thumb.tildacdn.com/tild3962-6335-4139-b962-386636356338/-/resize/520x/-/format/webp/2019.png"
     },
     {
         "id": 3,
         "purchased": False,
+        "available": 2,
         "model": "A8",
         "image": "https://thumb.tildacdn.com/tild3764-6131-4966-b237-393635633965/-/resize/520x/-/format/webp/2019.png"
     },
     {
         "id": 4,
         "purchased": False,
+        "available": 2,
         "model": "Q3",
         "image": "https://thumb.tildacdn.com/tild3032-6439-4663-b965-633332653537/-/resize/520x/-/format/webp/2019.png"
     },
@@ -55,22 +59,9 @@ def audi_purchase(request:HttpRequest, id_:int)->HttpResponse:
              }
         )
         print(orders)
-        car["purchased"] = True
+        car["available"] -= 1
         return HttpResponseRedirect("/audi")
-    return HttpResponse(
-        f"""
-        <h3> Great! you are going to purchase{car["model"]} </h3>
-        <form method="POST">
-            <laber for "name"> Your name</label>
-            <input id="name" name="name" required><br>
-            <laber for "phone"> Your phone</label>
-            <input id="phone" name="phone"required><br>
-            <laber for "email"> Your email</label>
-            <input id="email" name="email" type="email" required><br>
-            <button type="submit">Submit</button><br>
-        </form>
-        """
 
-    )
+    return render(request, "purchase_form.html", {"car":car})
     #return HttpResponseRedirect("/audi")
     # return HttpResponse(f"Car with id {id_} is sold")
