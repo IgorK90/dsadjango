@@ -17,7 +17,7 @@
         <div class="card shadow" style="width: 18rem; margin:1em">
             <img src="{{ car.image }}" class="card-img-top" alt="audi">
             <div class="card-body">
-                <h5 class="card-title">Audi{{ car.model }}</h5>
+                <h5 class="card-title">{{ car.name }}</h5>
                 <p class="card-text">Available: {{ car.available }}</p>
                 {% if car.available > 0 %}
                     <a href="/buy_car/{{ car.id }}" class="btn btn-primary">BUY</a>
